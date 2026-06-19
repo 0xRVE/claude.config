@@ -16,10 +16,12 @@
       "Bash(git clean *)",
       "Bash(git push *)",
       "Bash(gh pr merge *)",
-      "Bash(gh pr close *)"
+      "Bash(gh pr close *)",
+      "Bash(sed -i*)",
+      "Bash(sed --in-place*)"
     ],
     "allow": [
-      "Bash(sed -n *)",
+      "Bash(sed *)",
       "Bash(rg *)",
       "Bash(grep *)",
       "Bash(find *)",
@@ -54,6 +56,15 @@
       "Bash(git branch *)",
       "Bash(git rev-parse *)",
       "Bash(git merge-base *)",
+      "Bash(git -C * status *)",
+      "Bash(git -C * status)",
+      "Bash(git -C * diff *)",
+      "Bash(git -C * log *)",
+      "Bash(git -C * show *)",
+      "Bash(git -C * grep *)",
+      "Bash(git -C * branch *)",
+      "Bash(git -C * rev-parse *)",
+      "Bash(git -C * merge-base *)",
       "WebSearch",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:docs.rs)",
@@ -62,7 +73,7 @@
       "WebFetch(domain:docs.polkadot.com)",
       "WebFetch(domain:api.github.com)",
       "Read(/tmp/**)",
-      "Read(/private/tmp/**)",
+      "Read(/private/tmp/**)"
     ],
     "deny": []
   },
