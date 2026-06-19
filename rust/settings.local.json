@@ -5,22 +5,10 @@
       "/tmp",
       "/private/tmp"
     ],
-    "ask": [
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git commit)",
-      "Bash(git reset *)",
-      "Bash(git checkout *)",
-      "Bash(git switch *)",
-      "Bash(git restore *)",
-      "Bash(git clean *)",
-      "Bash(git push *)",
-      "Bash(gh pr merge *)",
-      "Bash(gh pr close *)",
-      "Bash(sed -i*)",
-      "Bash(sed --in-place*)"
-    ],
+    "ask": [],
     "allow": [
+      "Bash(tail *)",
+      "Bash(head *)",
       "Bash(sed *)",
       "Bash(rg *)",
       "Bash(grep *)",
