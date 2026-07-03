@@ -4,6 +4,7 @@
 - Don't pipe to `head`/`tail`/`cat` for truncation — the tools already truncate output. Use a command's own limit flags instead (e.g. `grep -m`, `find -quit`).
 - Prefer the native Glob/Grep/Read tools over `find`/`grep`/`cat` in the shell — they don't prompt for in-workspace work.
 - Never run `find /` or other whole-disk scans. Scope to a known root: the workspace, or `~/.cargo/registry/src/` for Rust crate sources.
+- Don't wrap a command in `&& echo …`/`|| echo …` to narrate its exit code. Run it bare and read the exit status (e.g. `git merge-base --is-ancestor A B` → exit 0 = ancestor, 1 = not).
 
 ## Don't run code to "think"
 - Never use `python3 -c`, `node -e`, `bash -c`, etc. just to print analysis, reasoning, or prose. Write that directly in the response.

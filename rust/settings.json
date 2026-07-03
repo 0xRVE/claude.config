@@ -1,11 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "additionalDirectories": [
-      "/tmp",
-      "/private/tmp"
-    ],
-    "ask": [],
     "allow": [
       "Bash(tail *)",
       "Bash(head *)",
@@ -20,7 +14,6 @@
       "Bash(ninja *)",
       "Bash(make *)",
       "Bash(ctest *)",
-      "Bash(python3 *)",
       "Bash(deno *)",
       "Bash(node *)",
       "Bash(npm *)",
@@ -47,7 +40,9 @@
       "Bash(git -C * status *)",
       "Bash(git -C * status)",
       "Bash(git -C * diff *)",
+      "Bash(git -C * diff)",
       "Bash(git -C * log *)",
+      "Bash(git -C * log)",
       "Bash(git -C * show *)",
       "Bash(git -C * grep *)",
       "Bash(git -C * branch *)",
@@ -61,9 +56,21 @@
       "WebFetch(domain:docs.polkadot.com)",
       "WebFetch(domain:api.github.com)",
       "Read(/tmp/**)",
-      "Read(/private/tmp/**)"
+      "Read(/private/tmp/**)",
+      "Read(~/.cargo/**)"
     ],
-    "deny": []
+    "deny": [
+      "Bash(python3 *)",
+      "Bash(python3)",
+      "Bash(python *)",
+      "Bash(python)"
+    ],
+    "ask": [],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
+    ]
   },
   "enabledPlugins": {
     "rust-skills@rust-skills": true,
@@ -77,6 +84,70 @@
       }
     }
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/robert/.claude/hooks/block-compound-bash.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Grep|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-code-discovery-gate",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/cbm-session-reminder"
+          }
+        ]
+      }
+    ]
+  },
+  "cleanupPeriodDays": 365,
   "theme": "auto",
-  "skipAutoPermissionPrompt": false
+  "skipAutoPermissionPrompt": false,
+  "skipDangerousModePermissionPrompt": true,
+  "disableAllHooks": false
 }
